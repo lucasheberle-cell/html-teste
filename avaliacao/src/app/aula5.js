@@ -1,9 +1,12 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Link, Stack } from "expo-router";
+import { StyleSheet, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function App() {
   return (
-    <View style={styles.tela}>
+    <SafeAreaView style={styles.tela}>
+      <Stack.Screen options={{ title: "Painel" }} />
+
       <View style={styles.cabecalho}>
         <View style={styles.icone}></View>
         <View>
@@ -13,7 +16,7 @@ export default function App() {
       </View>
       <View style={styles.areaCartao}>
         <View style={styles.cartao}>
-          <Text style={styles.texto3}>Batatas são macias</Text>
+          <Text style={styles.texto3}>Batatas são macias.</Text>
         </View>
         <View style={styles.cabecalhobotao}>
           <View style={styles.botao}>
@@ -21,7 +24,7 @@ export default function App() {
           </View>
         </View>
       </View>
-    </View>
+    </SafeAreaView>
 
   );
 }
@@ -50,7 +53,7 @@ const styles = StyleSheet.create({
     color: "#000000",
     fontSize: 20,
   },
-  
+
   texto4: {
     color: "#ffffff",
     fontSize: 15,
@@ -99,7 +102,7 @@ const styles = StyleSheet.create({
   },
   botao: {
     width: 200,
-    height:40,
+    height: 40,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#2832c4",
