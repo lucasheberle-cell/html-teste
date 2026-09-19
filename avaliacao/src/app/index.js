@@ -1,5 +1,5 @@
 import { Link, Stack } from "expo-router";
-import { StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 // Este arquivo é a rota "/" — a tela que abre primeiro.
@@ -15,54 +15,64 @@ export default function Inicio() {
       {/* Cada tela pode mexer no próprio cabeçalho */}
       <Stack.Screen options={{ title: "Painel" }} />
 
-      <View style={styles.cabecalho}>
-        <View style={styles.avatar} />
-        <View>
-          <Text style={styles.saudacao}>Olá, Estudante</Text>
-          <Text style={styles.subtitulo}>Bem-vindo de volta</Text>
+      <ScrollView contentContainerStyle={styles.conteudo}>
+        <View style={styles.cabecalho}>
+          <View style={styles.avatar} />
+          <View>
+            <Text style={styles.saudacao}>Olá, Estudante</Text>
+            <Text style={styles.subtitulo}>Bem-vindo de volta</Text>
+          </View>
         </View>
-      </View>          
 
-      <View style={styles.cartao}>
-        <Text style={styles.cartaoTitulo}>Aula05</Text>
-        <Text style={styles.detalhe}>Pasta da aula05 prova.</Text>
-        {/* href é o caminho do arquivo: notas.js vira "/notas" */}
-        <Link href="/aula5" style={styles.link}>
-          Ver aula05 →
-        </Link>
-      </View>
+        <View style={styles.cartao}>
+          <Text style={styles.cartaoTitulo}>Aula05</Text>
+          <Text style={styles.detalhe}>Pasta da aula05 prova.</Text>
+          {/* href é o caminho do arquivo: notas.js vira "/notas" */}
+          <Link href="/aula5" style={styles.link}>
+            Ver aula05 →
+          </Link>
+        </View>
 
-      <View style={styles.cartao}>
-        <Text style={styles.cartaoTitulo}>Aula04</Text>
-        <Text style={styles.detalhe}>Pasta da aula04.</Text>
-        <Link href="/aula04" style={styles.link}>
-          Ver aula04 →
-        </Link>
-      </View>
+        <View style={styles.cartao}>
+          <Text style={styles.cartaoTitulo}>Aula04</Text>
+          <Text style={styles.detalhe}>Pasta da aula04.</Text>
+          <Link href="/aula04" style={styles.link}>
+            Ver aula04 →
+          </Link>
+        </View>
 
-      <View style={styles.cartao}>
-        <Text style={styles.cartaoTitulo}>Aula03</Text>
-        <Text style={styles.detalhe}>Pasta da aula03.</Text>
-        <Link href="/aula03" style={styles.link}>
-          Ver aula03 →
-        </Link>
-      </View>
+        <View style={styles.cartao}>
+          <Text style={styles.cartaoTitulo}>Aula03</Text>
+          <Text style={styles.detalhe}>Pasta da aula03.</Text>
+          <Link href="/aula03" style={styles.link}>
+            Ver aula03 →
+          </Link>
+        </View>
 
-       <View style={styles.cartao}>
-        <Text style={styles.cartaoTitulo}>Aula02</Text>
-        <Text style={styles.detalhe}>Pasta da aula02.</Text>
-        <Link href="/aula02" style={styles.link}>
-          Ver aula02 →
-        </Link>
-      </View>
+        <View style={styles.cartao}>
+          <Text style={styles.cartaoTitulo}>Aula02</Text>
+          <Text style={styles.detalhe}>Pasta da aula02.</Text>
+          <Link href="/aula02" style={styles.link}>
+            Ver aula02 →
+          </Link>
+        </View>
 
-      <View style={styles.cartao}>
-        <Text style={styles.cartaoTitulo}>Aula01</Text>
-        <Text style={styles.detalhe}>Pasta da aula01.</Text>
-        <Link href="/aula01" style={styles.link}>
-          Ver aula01 →
-        </Link>
-      </View>
+        <View style={styles.cartao}>
+          <Text style={styles.cartaoTitulo}>Aula01</Text>
+          <Text style={styles.detalhe}>Pasta da aula01.</Text>
+          <Link href="/aula01" style={styles.link}>
+            Ver aula01 →
+          </Link>
+        </View>
+
+        <View style={styles.cartao}>
+          <Text style={styles.cartaoTitulo}>Aula06</Text>
+          <Text style={styles.detalhe}>Pasta da aula06.</Text>
+          <Link href="/aula06" style={styles.link}>
+            Ver aula06 →
+          </Link>
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -73,6 +83,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
     paddingHorizontal: 16,
     paddingTop: 16,
+  },
+
+  conteudo: {
+    paddingBottom: 16,
   },
 
   cabecalho: {
