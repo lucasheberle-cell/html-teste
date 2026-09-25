@@ -8,12 +8,12 @@ export default function Contador() {
     const [valor, setValor] = useState(0);
 
     function aumentar() {
-        setValor(valorAtual + 1);
+        setValor(valor + 1);
     }
 
     function diminuir() {
-        setValor(valorAtual - 1);
-    }
+        setValor(valor - 1);
+    } 
 
     return (
         <SafeAreaView style={styles.tela} edges={["bottom"]}>

@@ -72,6 +72,15 @@ export default function Inicio() {
             Ver aula06 →
           </Link>
         </View>
+
+         <View style={styles.cartao}>
+          <Text style={styles.cartaoTitulo}>Aula07</Text>
+          <Text style={styles.detalhe}>Pasta da aula07.</Text>
+          <Link href="/aula07" style={styles.link}>
+            Ver aula07 →
+          </Link>
+        </View>
+        
       </ScrollView>
     </SafeAreaView>
   );
