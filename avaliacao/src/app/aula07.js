@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Button, FlatList, StyleSheet, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function Contador() {
+export default function Lista() {
 
     const [texto, setTexto] = useState("");
     const [lista, setLista] = useState([]);

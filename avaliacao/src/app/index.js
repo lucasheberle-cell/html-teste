@@ -81,6 +81,14 @@ export default function Inicio() {
           </Link>
         </View>
         
+         <View style={styles.cartao}>
+          <Text style={styles.cartaoTitulo}>lista-db</Text>
+          <Text style={styles.detalhe}>Pasta da lista de tarefas com SQLite.</Text>
+          <Link href="/lista-db" style={styles.link}>
+            Ver lista-db →
+          </Link>
+        </View>
+        
       </ScrollView>
     </SafeAreaView>
   );
