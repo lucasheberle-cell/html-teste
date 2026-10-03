@@ -4,13 +4,14 @@ import { Button, FlatList, StyleSheet, Text, TextInput, View } from "react-nativ
 import { SafeAreaView } from "react-native-safe-area-context";
 import * as SQLite from "expo-sqlite";
 
-const db = SQLite.openDatabaseSync("lista.db");
+const db = SQLite.openDatabaseSync("floricultura.db");
 
 db.execSync(`
   CREATE TABLE IF NOT EXISTS tarefas (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    texto TEXT NOT NULL,
-    prioridade TEXT NOT NULL
+    nome TEXT NOT NULL,
+    cor TEXT NOT NULL,
+    cientifico TEXT NOT NULL
   );
 `);
 
@@ -18,23 +19,24 @@ function listar() {
     return db.getAllSync("SELECT * FROM tarefas ORDER BY id DESC");
 }
 
-function adicionar(texto, prioridade) {
-    db.runSync("INSERT INTO tarefas (texto, prioridade) VALUES (?, ?)", [texto, prioridade]);
+function adicionar(nome, cor, cientifico) {
+    db.runSync("INSERT INTO tarefas (nome, cor, cientifico) VALUES (?, ?, ?)", [nome, cor, cientifico]);
 }
 
 function remover(id) {
     db.runSync("DELETE FROM tarefas WHERE id = ?", [id]);
 }
 
-function edita(id, texto, prioridade) {
-    db.runSync("UPDATE tarefas SET texto = ?, prioridade = ? WHERE id = ?", [texto, prioridade, id]);
+function edita(id, nome, cor, cientifico) {
+    db.runSync("UPDATE tarefas SET nome = ?, cor = ?, cientifico = ? WHERE id = ?", [nome, cor, cientifico, id]);
 }
 
 export default function ListaDb() {
 
-    const [texto, setTexto] = useState("");
+    const [nome, setNome] = useState("");
     const [lista, setLista] = useState([]);
-    const [prioridade, setPrioridade] = useState("");
+    const [cor, setCor] = useState("");
+    const [cientifico, setCientifico] = useState("");
     const [idEditando, setIdEditando] = useState(0);
 
     function carregar() {
@@ -46,9 +48,10 @@ export default function ListaDb() {
     }, []);
 
     function salvar() {
-        adicionar(texto, prioridade);
-        setTexto("");
-        setPrioridade("");
+        adicionar(nome, cor, cientifico);
+        setNome("");
+        setCor("");
+        setCientifico("");
         carregar();
     }
 
@@ -59,19 +62,21 @@ export default function ListaDb() {
 
     function editar(lista) {
         setIdEditando(lista.id);
-        setTexto(lista.texto);
-        setPrioridade(lista.prioridade);
+        setNome(lista.nome);
+        setCor(lista.cor);
+        setCientifico(lista.cientifico);
     }
 
     function guardarEdicao() {
         if (idEditando == 0) {
-            salvar();
+            salvar(nome, cor, cientifico);
         } else {
-            edita(idEditando, texto, prioridade);
+            edita(idEditando, nome, cor, cientifico);
         }
-        setTexto("");
-         setIdEditando(0);
-        setPrioridade("");
+        setNome("");
+        setIdEditando(0);
+        setCor("");
+        setCientifico("");
         carregar();
     }
 
@@ -79,18 +84,24 @@ export default function ListaDb() {
     return (
         <SafeAreaView style={styles.tela} edges={["bottom"]}>
             <Stack.Screen options={{ title: "Lista" }} />
-            <Text style={styles.titulo}>Listinha dos Guri😎</Text>
+            <Text style={styles.titulo}>Floricultura</Text>
             <TextInput
                 style={styles.entrada}
-                placeholder="Digite um item..."
-                value={texto}
-                onChangeText={setTexto}
+                placeholder="Digite o nome..."
+                value={nome}
+                onChangeText={setNome}
             />
             <TextInput
                 style={styles.entrada}
-                placeholder="Digite a prioridade..."
-                value={prioridade}
-                onChangeText={setPrioridade}
+                placeholder="Digite a cor..."
+                value={cor}
+                onChangeText={setCor}
+            />
+            <TextInput
+                style={styles.entrada}
+                placeholder="Digite o nome científico..."
+                value={cientifico}
+                onChangeText={setCientifico}
             />
             {idEditando !== 0 ? (
                 <Button title="Guardar Edição" onPress={guardarEdicao} />
@@ -101,7 +112,7 @@ export default function ListaDb() {
                 data={lista}
                 renderItem={({ item }) => (
                     <View style={styles.itemContainer}>
-                        <Text style={styles.item}>{item.texto} {item.prioridade}</Text>
+                        <Text style={styles.item}>{item.nome} {item.cor} {item.cientifico}</Text>
                         <Button title="🗑️" color="#D64545" onPress={() => excluir(item.id)} />
                         <Button title="✏️" color="#48494b" onPress={() => editar(item)} />
                     </View>

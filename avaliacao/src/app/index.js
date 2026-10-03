@@ -88,6 +88,14 @@ export default function Inicio() {
             Ver lista-db →
           </Link>
         </View>
+
+        <View style={styles.cartao}>
+          <Text style={styles.cartaoTitulo}>floricultura</Text>
+          <Text style={styles.detalhe}>Pasta aula0210.</Text>
+          <Link href="/floricultura" style={styles.link}>          
+            Ver floricultura →
+          </Link>
+        </View>
         
       </ScrollView>
     </SafeAreaView>
