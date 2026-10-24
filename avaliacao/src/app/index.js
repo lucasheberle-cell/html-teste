@@ -96,6 +96,30 @@ export default function Inicio() {
             Ver floricultura →
           </Link>
         </View>
+
+        <View style={styles.cartao}>
+          <Text style={styles.cartaoTitulo}>cachorro</Text>
+          <Text style={styles.detalhe}>Pasta de cachorros.</Text>
+          <Link href="/cachorro" style={styles.link}>
+            Ver cachorro →
+          </Link>
+        </View>
+
+        <View style={styles.cartao}>
+          <Text style={styles.cartaoTitulo}>cnpj</Text>
+          <Text style={styles.detalhe}>Pasta do cnpj.</Text>
+          <Link href="/cnpj" style={styles.link}>
+            Ver cnpj →
+          </Link>
+        </View>
+
+        <View style={styles.cartao}>
+          <Text style={styles.cartaoTitulo}>pokemon</Text>
+          <Text style={styles.detalhe}>Pasta do pokemon.</Text>
+          <Link href="/pokemon" style={styles.link}>
+            Ver pokemon →
+          </Link>
+        </View>
         
       </ScrollView>
     </SafeAreaView>
