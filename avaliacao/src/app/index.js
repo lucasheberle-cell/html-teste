@@ -121,6 +121,13 @@ export default function Inicio() {
           </Link>
         </View>
         
+          <View style={styles.cartao}>
+          <Text style={styles.cartaoTitulo}>petshop</Text>
+          <Text style={styles.detalhe}>Pasta do petshop.</Text>
+          <Link href="/petshop" style={styles.link}>
+            Ver petshop →
+          </Link>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );
